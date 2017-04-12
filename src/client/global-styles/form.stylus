@@ -1,0 +1,28 @@
+@import '../variables'
+.form
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  .form-section
+    display flex
+    flex-direction column
+    width calc(33% - 0.5rem)
+    background rgba(0,0,0,0.03)
+    padding 0.5rem
+    box-sizing border-box
+    overflow hidden
+    margin-bottom 1rem
+    box-shadow 1px 1px 1px rgba(0,0,0,0.1)
+    @media screen and (max-width:860px)
+      width calc(50% - 0.5rem)
+    @media screen and (max-width:520px)
+      width 100%
+    .form-item
+      display flex
+      flex-direction column
+      margin-bottom 1rem
+  .controls
+    width 100%
+.reveal-modal.large
+  .form-section
+    width calc(50% - 0.5rem)

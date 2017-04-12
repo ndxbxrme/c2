@@ -1,0 +1,3 @@
+@import '../../variables'
+.address-list
+  width calc(50% - 0.5rem)

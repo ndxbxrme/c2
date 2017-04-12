@@ -1,0 +1,6 @@
+@import '../../variables'
+.footer
+  flex 0
+  background black
+  color #fff
+  box-sizing border-box

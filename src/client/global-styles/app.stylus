@@ -1,0 +1,49 @@
+@import '../variables'
+body, html
+  font-family 'Arial', sans-serif
+  color #333
+  margin 0
+  display flex
+  flex-direction column
+  a
+    text-decoration none
+    cursor pointer
+  .body
+    display flex
+    flex-direction column
+    align-items center
+    padding-top 80px
+    flex 1
+    box-sizing border-box
+  .container
+    width calc(100vw - 2rem)
+    max-width 1100px
+  .row
+    display flex
+    &.center
+      justify-content center
+    &.v-center
+      align-items center
+    &.baseline
+      align-items baseline
+    &.between
+      justify-content space-between
+    &.around
+      justify-content space-around
+    &.left
+      justify-content flex-start
+    &.right
+      justify-content flex-end
+  .col
+    display flex
+    flex-direction column
+    &.center
+      align-items center
+    &.v-center
+      justify-content center
+  .flex1
+    flex 1
+  .flex0
+    flex 0
+  .inline
+    display inline

@@ -1,0 +1,29 @@
+.address-list
+  .row.between.baseline
+    .left
+      h2.inline {{ m('heading_address_list') }}
+      input.filter(type='text', ng-model='filter', ng-change='filter()', placeholder="{{ m('placeholder_filter') }}")
+    .right
+      button.new(ng-click='add()') {{ m('button_address_list_add') }}
+  //table(ng-show='ngModel.item.addresses.length > 0')
+  table(ng-show='addresses.length')
+    thead
+      tr
+        th(ng-click="sort('name')", ng-class="sortClass('name')") {{ m('heading_address_list_name') }}
+        th(ng-click="sort('address')", ng-class="sortClass('address')") {{ m('heading_address_list_address') }}
+        th(ng-click="sort('city')", ng-class="sortClass('city')") {{ m('heading_address_list_city') }}
+        th(ng-click="sort('is_main')", ng-class="sortClass('is_main')") {{ m('heading_address_list_is_main') }}
+        th.colapse
+        th.colapse
+        th.colapse
+    tbody
+      tr(ng-repeat='address in addresses=(getAddresses() | filter:filter | orderBy:sort) | limitTo:limit:limit*(page-1)')
+        td {{ address.name }}
+        td {{ address.address }}
+        td {{ address.city }}
+        td {{$index===0?'Main':''}}
+        td
+        td
+        td
+  .alert.empty(ng-hide='addresses.length') {{ m('heading_address_list_empty') }}
+  pagination(total='addresses.length', ng-model='page', page-size='limit', show-first-last='true')

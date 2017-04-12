@@ -1,0 +1,42 @@
+{
+  "name": "concerto2",
+  "description": "",
+  "main": "server/app.js",
+  "authors": [
+    ""
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.6.4",
+    "angular-touch": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "humane-js": "^3.2.2",
+    "headjs": "^1.0.3",
+    "hammerjs": "^2.0.8",
+    "normalize-css": "^6.0.0",
+    "angular-gravatar": "^0.4.2",
+    "angular-ui-select2": "^0.0.5",
+    "font-awesome": "fontawesome#^4.7.0",
+    "ndx-auth": "^0.0.16",
+    "ndx-pagination": "^0.0.8",
+    "ndx-socket": "^0.0.5",
+    "ndx-scroll-top": "^0.0.7",
+    "ndx-codemirror": "^0.0.8",
+    "ndx-markdown": "^0.0.4",
+    "ndx-rest": "^0.0.26",
+    "ndx-array-extras": "^0.0.4",
+    "ndx-check-for-changes": "^0.0.3",
+    "ndx-modal": "^0.0.3"
+  }
+}

@@ -1,0 +1,18 @@
+mixin menu-item(title,route,icon,roles)
+  if roles
+    - myroles = 'auth.checkRoles([' + roles + '])'
+    .menu-item(ng-show=myroles)
+      a(ui-sref=route)
+        if icon
+          - iconclass = 'fa fa-' + icon
+          i(class=iconclass)
+        span= title
+      block
+  else
+    .menu-item
+      a(ui-sref=route)
+        if icon
+          - iconclass = 'fa fa-' + icon
+          i(class=iconclass)
+        span= title
+      block

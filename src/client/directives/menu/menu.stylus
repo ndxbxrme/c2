@@ -1,0 +1,28 @@
+@import '../../variables'
+.header
+  .menu
+    display flex
+    .menu-item
+      flex 1
+      position relative
+      display flex
+      a
+        color #fff
+        flex 1
+        padding 1rem 0.5rem
+        transition 0.1s
+        &:hover
+          background rgba(255,255,255,0.2)
+        span
+          white-space nowrap
+          margin-left 0.3rem
+      .sub-menu
+        position absolute
+        top 100%
+        left 0
+        min-width 100%
+        background black
+        display none
+      &:hover
+        .sub-menu
+          display block

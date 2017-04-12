@@ -1,0 +1,14 @@
+include ../../mixins/menu.jade
+.menu
+  +menu-item('Home', 'dashboard', 'home', null)
+  +menu-item('Admin', 'admin', 'archive', null)
+    .sub-menu
+      +menu-item('System Owner Settings', 'system', null, null)
+      +menu-item('End User', 'enduser', null, null)
+      +menu-item('Agency', 'agencies', null, null)
+  +menu-item('Contract', 'contract', 'folder-open-o', null)
+  +menu-item('Vacancy', 'vacancy', 'suitcase', null)
+  +menu-item('Workers', 'workers', 'users', null)
+  +menu-item('Timesheets', 'timesheets', 'clock-o', null)
+  +menu-item('Invoices', 'invoices', 'file-text', null)
+  +menu-item('Cash', 'cash', 'gbp', null)

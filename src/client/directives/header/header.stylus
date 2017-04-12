@@ -1,0 +1,15 @@
+@import '../../variables'
+  .header
+    background black
+    color white
+    width 100%
+    display flex
+    justify-content center
+    position fixed
+    padding 0.5rem 0 0 0
+    font-size 0.8rem
+    top 0
+    z-index 50
+    .logo
+      margin 0
+      font-size 0.8rem

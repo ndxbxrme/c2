@@ -1,0 +1,24 @@
+include ../../mixins/form.jade
+.system
+  h1 {{ m('heading_system' + (editing?'_editing':'')) }}
+  form.form(name='systemForm', ng-submit='save()', novalidate)
+    .form-section
+      +input({name:'name',parent:'system',errors:{required:true}})
+      +input({name:'legal_name',parent:'system',errors:{required:true}})
+      +input({name:'system_name',parent:'system',errors:{required:true}})
+    .form-section
+      +input({name:'company_no',parent:'system',errors:{required:true,"ng-pattern":'/^[0-9]+$/'}})
+      +input({name:'vat_no',parent:'system',errors:{required:true,"ng-pattern":'/^[0-9]+$/'}})
+      +input({name:'vatper',parent:'system',errors:{required:true,"msp-vat":''}})
+    .form-section
+      h3 {{ m('message_system_bank_title') }}
+      p {{ m('message_system_bank_subtitle') }}
+      +input({name:'payee_name',parent:'system',errors:{required:true}})
+      +input({name:'sort_code',parent:'system',errors:{required:true,"ui-mask":'99-99-99'}})
+      +input({name:'account_number',parent:'system',errors:{required:true,"ui-mask":'99999999'}})
+    .controls
+      input.edit(type='button', value="{{ m('button_edit') }}", ng-click='edit()', ng-hide='editing')
+      input.save(type='submit', value="{{ m('button_save') }}", ng-show='editing')
+      input.cancel(type='button', value="{{ m('button_cancel') }}", ng-click='cancel()')
+    address-list(ng-model='system')
+    user-list(ng-model='system')
