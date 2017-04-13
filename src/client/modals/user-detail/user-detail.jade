@@ -1,0 +1,11 @@
+include ../../mixins/form.jade
+.modal.user-detail
+  h1 {{ m('heading_user' + (adding?'_adding':editing?'_editing':'')) }}
+  form.form(name='forms.userForm', novalidate, ng-submit='save()')
+    .form-section
+      +select({name:'usertype',parent:'forms.user',model:'user.item.usertype',repeat:'type in usertypes',item:'type',errors:{required:true}})
+      +input({name:'username',parent:'forms.user',model:'user.item.username',errors:{required:true}})
+      +input({name:'first_name',parent:'forms.user',model:'user.item.first_name',errors:{required:true}})
+      +input({name:'last_name',parent:'forms.user',model:'user.item.last_name',errors:{required:true}})
+      +input({name:'email',type:'email',parent:'forms.user',model:'user.item.email',errors:{required:true,email:false}})
+    +form-controls()

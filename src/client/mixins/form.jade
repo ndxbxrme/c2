@@ -12,7 +12,7 @@ mixin select(args)
       option(value='')
       - value = args.item + '.' + args.id
       - mytext = args.item + '.' + args.text
-      option(ng-repeat=args.repeat value=value) {{ #{mytext} }}
+      option(ng-repeat=args.repeat value='{{#{value}}}') {{ #{mytext} }}
     each k, v in args.errors
       - show = 'submitted && ' + args.parent + 'Form.' + args.name + '.$error.' + v.replace(/^[a-z]+-/,'')
       small.error(ng-show=show) {{ m('error_#{args.msgparent}_#{args.name}_#{v}')}}
@@ -24,9 +24,16 @@ mixin input(args)
     - args.model = args.model || args.parent + '.item.' + args.name
     - args.type = args.type || 'text'
     - args.errors = args.errors || {}
+    - if(args.depth) { args.parent = '$parent.$parent.' + args.parent}
     label {{ m('title_#{args.msgparent}_#{args.name}')}}
     input(type=args.type, name=args.name, ng-model=args.model, placeholder="{{ m('placeholder_#{args.msgparent}_#{args.name}')}}", ng-disabled='!editing')&attributes(args.errors)&attributes(attributes)
     each k, v in args.errors
       - show = 'submitted && ' + args.parent + 'Form.' + args.name + '.$error.' + v.replace(/^[a-z]+-/,'')
       small.error(ng-show=show) {{ m('error_#{args.msgparent}_#{args.name}_#{v}')}}
     block
+    
+mixin form-controls()
+  .controls
+    input.edit(type='button', value="{{ m('button_edit') }}", ng-click='edit()', ng-hide='editing')
+    input.save(type='submit', value="{{ m('button_save') }}", ng-show='editing')
+    input.cancel(type='button', value="{{ m('button_cancel') }}", ng-click='cancel()')

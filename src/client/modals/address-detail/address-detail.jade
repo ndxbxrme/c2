@@ -1,7 +1,7 @@
 include ../../mixins/form.jade
 .modal.address-detail
-  h1 {{ m('heading_address' + (adding?'adding':editing?'editing':'')) }}
-  form.form(name='forms.addressForm', novalidate, ng-submit='saveAddress()')
+  h1 {{ m('heading_address' + (adding?'_adding':editing?'_editing':'')) }}
+  form.form(name='forms.addressForm', novalidate, ng-submit='save()')
     .form-section
       +input({name:'name',parent:'forms.address',model:'address.name',errors:{required:true}})
       +input({name:'line1',parent:'forms.address',model:'address.line1',errors:{required:true}})
@@ -12,8 +12,5 @@ include ../../mixins/form.jade
       +input({name:'postcode',parent:'forms.address',model:'address.postcode',errors:{required:true}})
       .form-item
         label Billing Address
-          input(type='checkbox')
-    .controls
-      input.edit(type='button', value="{{ m('button_edit') }}", ng-click='edit()', ng-hide='editing')
-      input.save(type='submit', value="{{ m('button_save') }}", ng-show='editing')
-      input.cancel(type='button', value="{{ m('button_cancel') }}", ng-click='cancel()')
+          input(type='checkbox', ng-model='data.billing')
+    +form-controls()

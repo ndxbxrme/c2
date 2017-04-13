@@ -2,10 +2,9 @@
   .row.between.baseline
     .left
       h2.inline {{ m('heading_address_list') }}
-      input.filter(type='text', ng-model='filter', ng-change='filter()', placeholder="{{ m('placeholder_filter') }}")
+      input.filter(type='text', ng-model='filter', placeholder="{{ m('placeholder_filter') }}")
     .right
-      button.new(ng-click='add()') {{ m('button_address_list_add') }}
-  //table(ng-show='ngModel.item.addresses.length > 0')
+      button.new(ng-click='addviewedit()') {{ m('button_address_list_add') }}
   table(ng-show='addresses.length')
     thead
       tr
@@ -19,11 +18,14 @@
     tbody
       tr(ng-repeat='address in addresses=(getAddresses() | filter:filter | orderBy:sort) | limitTo:limit:limit*(page-1)')
         td {{ address.name }}
-        td {{ address.address }}
+        td {{ address.line1 + ', ' + address.line2 + ', ' + address.line3 }}
         td {{ address.city }}
-        td {{$index===0?'Main':''}}
+        td {{ getAddresses().indexOf(address)===0?'Main':''}}
         td
+          a(href='', ng-click='addviewedit(address)') View
         td
+          a(href='', ng-click='addviewedit(address, true)') Edit
         td
+          a(href='', ng-click='delete(address)', ng-show='$index>0') Del
   .alert.empty(ng-hide='addresses.length') {{ m('heading_address_list_empty') }}
   pagination(total='addresses.length', ng-model='page', page-size='limit', show-first-last='true')

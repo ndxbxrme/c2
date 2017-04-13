@@ -1,1 +1,31 @@
-.user-list user-list
+.user-list
+  .row.between.baseline
+    .left
+      h2.inline {{ m('heading_user_list') }}
+      input.filter(type='text', ng-model='filter.$like', placeholder="{{ m('placeholder_filter') }}")
+    .right
+      button.new(ng-click='addviewedit()') {{ m('button_user_list_add') }}
+  table(ng-show='users.items.length')
+    thead
+      tr
+        th(ng-click="sort('username')", ng-class="sortClass('username')") {{ m('heading_user_list_username') }}
+        th(ng-click="sort('first_name')", ng-class="sortClass('first_name')") {{ m('heading_user_list_first_name') }}
+        th(ng-click="sort('last_name')", ng-class="sortClass('last_name')") {{ m('heading_user_list_last_name') }}
+        th(ng-click="sort('email')", ng-class="sortClass('email')") {{ m('heading_user_list_email') }}
+        th.colapse
+        th.colapse
+        th.colapse
+    tbody
+      tr(ng-repeat='user in users.items')
+        td {{ user.username }}
+        td {{ user.first_name }}
+        td {{ user.last_name }}
+        td {{ user.email }}
+        td
+          a(href='', ng-click='addviewedit(user)') View
+        td
+          a(href='', ng-click='addviewedit(user, true)') Edit
+        td
+          a(href='', ng-click='delete(user)') Del
+  .alert.empty(ng-hide='users.items.length') {{ m('heading_user_list_empty') }}
+  pagination(total='users.items.length', ng-model='opts.page', page-size='opts.pageSize', show-first-last='true')

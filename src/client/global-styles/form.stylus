@@ -26,3 +26,5 @@
 .reveal-modal.large
   .form-section
     width calc(50% - 0.5rem)
+input[type='text'], input[type='email'], input[type='password']
+  padding 0.3rem
